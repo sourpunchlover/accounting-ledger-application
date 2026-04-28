@@ -1,5 +1,8 @@
 package com.pluralsight;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class RootsAndRevenueApp {
@@ -18,17 +21,17 @@ public class RootsAndRevenueApp {
             System.out.println("\tL) Display Ledger Screen");
             System.out.println("\tX) Exit");
             System.out.println("Enter your selection: ");
-            String userOption = scanner.nextLine().toUpperCase();//
+            String userOption = scanner.nextLine().toUpperCase();
 
             switch (userOption) {
                 case "D":
-                    //addDeposit();
+                    //addDepositScreen();
                     break;
                 case "P":
-                    //makePayment();
+                    //makePaymentScreen();
                     break;
                 case "L":
-                    //displayLedger();
+                    //displayLedgerScreen();
                     break;
                 case "X":
                     //exit system
@@ -45,4 +48,23 @@ public class RootsAndRevenueApp {
 
 
     }//closing curly for homeScreen method
+
+    public static void addDepositScreen(Scanner scanner) {
+        System.out.print("Enter description: ");
+        String description = scanner.nextLine();
+        System.out.print("Enter vendor: ");
+        String vendor = scanner.nextLine();
+        System.out.print("Enter amount: ");
+        double amount = scanner.nextDouble();
+        scanner.nextLine();
+
+        //using to auto gen date & time & to keep in String format
+        LocalDate date = LocalDate.now();//gets current date
+        LocalTime time = LocalTime.now();//gets current time
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String formattedDate = date.format(dateFormatter);
+        String formattedTime = time.format(timeFormatter);
+
+    }//closing curly for addDepositScreen method
 }
