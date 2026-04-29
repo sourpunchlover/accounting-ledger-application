@@ -1,5 +1,8 @@
 package com.pluralsight;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -25,7 +28,7 @@ public class RootsAndRevenueApp {
 
             switch (userOption) {
                 case "D":
-                    //addDepositScreen();
+                    addDepositScreen(scanner);
                     break;
                 case "P":
                     //makePaymentScreen();
@@ -61,10 +64,26 @@ public class RootsAndRevenueApp {
         //using to auto gen date & time & to keep in String format
         LocalDate date = LocalDate.now();//gets current date
         LocalTime time = LocalTime.now();//gets current time
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         String formattedDate = date.format(dateFormatter);
         String formattedTime = time.format(timeFormatter);
+
+        Transaction transaction = new Transaction(formattedDate,formattedTime,description,vendor,amount);
+
+        try {
+            FileWriter fileWriter = new FileWriter("src/main/resources/transactions.csv", true);
+            BufferedWriter buffWriter = new BufferedWriter(fileWriter);
+            buffWriter.write(transaction.getDate() + "|" + transaction.getTime() + "|" + transaction.getDescription() + "|" + transaction.getVendor() + "|" + transaction.getAmount());
+            buffWriter.newLine();
+
+            buffWriter.close();
+            System.out.println("Deposit saved successfully! \uD83C\uDF31"); //confirmation message
+        } catch(IOException e) {
+            e.printStackTrace();
+            System.out.println("Problem with IO");
+
+        }//closing curly for catch
 
     }//closing curly for addDepositScreen method
 }
