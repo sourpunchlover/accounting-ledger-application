@@ -1,12 +1,12 @@
 package com.pluralsight;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class RootsAndRevenueApp {
     public static void main(String[] args) {
@@ -122,4 +122,32 @@ public class RootsAndRevenueApp {
         }//closing curly for catch
 
     }//closing curly for makePayment
+
+    //Ledger needs file & buffered reader
+    public static void displayLedgerScreen(Scanner scanner) {
+        ArrayList<Transaction> transList = new ArrayList<>();
+
+        try {
+            FileReader fileReader = new FileReader("src/main/resources/transactions.csv");
+            BufferedReader buffReader = new BufferedReader(fileReader);
+            buffReader.readLine();
+
+            String line;
+            while((line = buffReader.readLine()) != null) {
+                String[] splitData = line.split(Pattern.quote("|"));
+                String date = splitData[0];
+                String time = splitData[1];
+                String description = splitData[2];
+                String vendor = splitData[3];
+                double amount = Double.parseDouble(splitData[4]);
+
+                Transaction transaction = new Transaction(date, time, description, vendor, amount);
+                transList.add(transaction);
+            }//closing curly for while
+            buffReader.close();
+        }catch(IOException e) {
+            e.printStackTrace();
+            System.out.println("Problem with IO");
+        }//closing curly for catch
+    }//closing curly for displayLedgerScreen
 }
