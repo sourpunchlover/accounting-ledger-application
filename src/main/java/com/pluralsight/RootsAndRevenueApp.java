@@ -12,26 +12,27 @@ public class RootsAndRevenueApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome To Roots and Revenue!");
+        System.out.println("\n\n");
         homeScreen(scanner); //passing so it can be used in homeScreen method
 
     }
     public static void homeScreen(Scanner scanner) {
 
         while (true) {
-            System.out.println("Select from the following options: ");
+            System.out.println("What would you like to do today? ");
             System.out.println("\tD) Add Deposit");
             System.out.println("\tP) Make Payment(Debit)");
             System.out.println("\tL) Ledger");
             System.out.println("\tX) Exit");
-            System.out.println("Enter your selection: ");
+            System.out.print("Enter your selection: ");
             String userOption = scanner.nextLine().toUpperCase();
 
             switch (userOption) {
                 case "D":
-                    addDepositScreen(scanner);
+                    addDeposit(scanner);
                     break;
                 case "P":
-                    //makePaymentScreen();
+                    makePayment(scanner);
                     break;
                 case "L":
                     //displayLedgerScreen();
@@ -52,12 +53,12 @@ public class RootsAndRevenueApp {
 
     }//closing curly for homeScreen method
 
-    public static void addDepositScreen(Scanner scanner) {
+    public static void addDeposit(Scanner scanner) {
         System.out.print("Enter description: ");
         String description = scanner.nextLine();
         System.out.print("Enter vendor: ");
         String vendor = scanner.nextLine();
-        System.out.print("Enter amount (numbers only, no $): ");
+        System.out.print("Enter deposit amount (numbers only, no $): ");
         double amount = scanner.nextDouble();
         scanner.nextLine();
 
@@ -85,5 +86,40 @@ public class RootsAndRevenueApp {
 
         }//closing curly for catch
 
-    }//closing curly for addDepositScreen method
+    }//closing curly for addDeposit method
+
+    public static void makePayment(Scanner scanner) {
+        System.out.print("Enter description: ");
+        String description = scanner.nextLine();
+        System.out.print("Enter vendor: ");
+        String vendor = scanner.nextLine();
+        System.out.print("Enter payment amount (numbers only, no $): ");
+        double amount = scanner.nextDouble();
+        scanner.nextLine();
+
+        //using to auto gen date & time & to keep in String format
+        LocalDate date = LocalDate.now();//gets current date
+        LocalTime time = LocalTime.now();//gets current time
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String formattedDate = date.format(dateFormatter);
+        String formattedTime = time.format(timeFormatter);
+
+        Transaction transaction = new Transaction(formattedDate,formattedTime,description,vendor,amount);
+
+        try {
+            FileWriter fileWriter = new FileWriter("src/main/resources/transactions.csv", true);
+            BufferedWriter buffWriter = new BufferedWriter(fileWriter);
+            buffWriter.write("\n" + transaction.getDate() + "|" + transaction.getTime() + "|" + transaction.getDescription() + "|" + transaction.getVendor() + "|" + String.format("%.2f", -transaction.getAmount()));
+
+
+            buffWriter.close();
+            System.out.println("Payment saved successfully! \uD83C\uDF31"); //confirmation message
+        } catch(IOException e) {
+            e.printStackTrace();
+            System.out.println("Problem with IO");
+
+        }//closing curly for catch
+
+    }//closing curly for makePayment
 }
