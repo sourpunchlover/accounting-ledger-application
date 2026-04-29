@@ -74,8 +74,8 @@ public class RootsAndRevenueApp {
         try {
             FileWriter fileWriter = new FileWriter("src/main/resources/transactions.csv", true);
             BufferedWriter buffWriter = new BufferedWriter(fileWriter);
-            buffWriter.write(transaction.getDate() + "|" + transaction.getTime() + "|" + transaction.getDescription() + "|" + transaction.getVendor() + "|" + transaction.getAmount());
-            buffWriter.newLine();
+            buffWriter.write("\n" + transaction.getDate() + "|" + transaction.getTime() + "|" + transaction.getDescription() + "|" + transaction.getVendor() + "|" + String.format("%.2f", transaction.getAmount()));
+
 
             buffWriter.close();
             System.out.println("Deposit saved successfully! \uD83C\uDF31"); //confirmation message
