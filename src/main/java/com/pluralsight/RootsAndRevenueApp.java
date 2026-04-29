@@ -21,7 +21,7 @@ public class RootsAndRevenueApp {
             System.out.println("Select from the following options: ");
             System.out.println("\tD) Add Deposit");
             System.out.println("\tP) Make Payment(Debit)");
-            System.out.println("\tL) Display Ledger Screen");
+            System.out.println("\tL) Ledger");
             System.out.println("\tX) Exit");
             System.out.println("Enter your selection: ");
             String userOption = scanner.nextLine().toUpperCase();
@@ -57,7 +57,7 @@ public class RootsAndRevenueApp {
         String description = scanner.nextLine();
         System.out.print("Enter vendor: ");
         String vendor = scanner.nextLine();
-        System.out.print("Enter amount: ");
+        System.out.print("Enter amount (numbers only, no $): ");
         double amount = scanner.nextDouble();
         scanner.nextLine();
 
