@@ -35,7 +35,7 @@ public class RootsAndRevenueApp {
                     makePayment(scanner);
                     break;
                 case "L":
-                    //displayLedgerScreen();
+                    displayLedgerScreen(scanner);
                     break;
                 case "X":
                     //exit system
@@ -149,5 +149,55 @@ public class RootsAndRevenueApp {
             e.printStackTrace();
             System.out.println("Problem with IO");
         }//closing curly for catch
+
+        //Ledger Menu
+        while (true) {
+            System.out.println("Which would you like to view? ");
+            System.out.println("\tA) All");
+            System.out.println("\tD) Deposits");
+            System.out.println("\tP) Payments");
+            System.out.println("\tR) Reports");
+            System.out.println("\tH) Home");
+            System.out.print("Enter your selection: ");
+            String userOption = scanner.nextLine().toUpperCase();
+
+            switch (userOption) {
+                case "A":
+                    for (int i = transList.size() - 1; i >= 0; i--) {//counting down to display new entries first
+                        Transaction t = transList.get(i);
+                        System.out.printf("date: %s | time: %s | description: %s | vendor: %s | amount: %.2f%n", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+                }
+                    break;
+                case "D":
+                    for (int i = transList.size() - 1; i >= 0; i--) {
+                        Transaction t = transList.get(i);
+                        if (t.getAmount() > 0) {
+                            System.out.printf("date: %s | time: %s | description: %s | vendor: %s | amount: %.2f%n", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+                        }
+                    }
+                    break;
+                case "P":
+                    for (int i = transList.size() - 1; i >= 0; i--) {
+                        Transaction t = transList.get(i);
+                        if (t.getAmount() < 0) {
+                            System.out.printf("date: %s | time: %s | description: %s | vendor: %s | amount: %.2f%n", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+                        }
+                    }
+                    break;
+                case "R":
+                    //A new screen that allows the user to run pre-defined reports or();
+                    //to run a custom search
+                    break;
+                case "H":
+                    //go back to the home page();
+                    return;
+                default:
+                    System.out.println("Invalid option entered (press Enter to continue)");
+                    System.out.println("\n\n");
+            }//closing curly for switch
+
+        }//closing curly for while
+
+
     }//closing curly for displayLedgerScreen
 }
