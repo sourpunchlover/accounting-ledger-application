@@ -11,10 +11,39 @@ import java.util.regex.Pattern;
 public class RootsAndRevenueApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome To Roots and Revenue!");
-        System.out.println("\n\n");
+        starterScreen(scanner);
         homeScreen(scanner); //passing so it can be used in homeScreen method
 
+    }
+    //Customized starter screen
+    public static void starterScreen(Scanner scanner) {
+        String green = "\u001B[32m";
+        String yellow = "\u001B[33m";
+        String blue = "\u001B[34m";
+        String pink = "\u001B[35m";
+        String reset = "\u001B[0m";
+
+        System.out.println(green + "\n🌱 🌿 🪴 🌱 🌿 🪴 🌱 🌿 🪴 🌱 🌿 🪴 🌱 🌿 🪴" + reset);
+
+        // typewriter effect on title
+        String title = "\n  R O O T S  &  R E V E N U E\n";
+        try {
+            for (char c : title.toCharArray()) {
+                System.out.print(yellow + c + reset);
+                Thread.sleep(80);
+            }
+
+            // subtitle
+            System.out.println(blue + "\n      Your Garden Business Tracker 🪴" + reset);
+            System.out.println(pink + "     Grow Your Business, Track Your Roots" + reset);
+            System.out.println(green + "\n🌱 🌿 🪴 🌱 🌿 🪴 🌱 🌿 🪴 🌱 🌿 🪴 🌱 🌿 🪴\n" + reset);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.print(yellow + "Press Enter to start growing your revenue... 🌱 " + reset);
+        scanner.nextLine();
     }
     public static void homeScreen(Scanner scanner) {
 
@@ -44,7 +73,7 @@ public class RootsAndRevenueApp {
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Invalid option entered (press Enter to continue)");
+                    System.out.println("Invalid option entered. Try again.");
                     System.out.println("\n\n");
             }//closing curly for switch
 
