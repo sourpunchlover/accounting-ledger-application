@@ -185,19 +185,94 @@ public class RootsAndRevenueApp {
                     }
                     break;
                 case "R":
-                    //A new screen that allows the user to run pre-defined reports or();
-                    //to run a custom search
+                    displayReportsScreen(scanner, transList);
                     break;
                 case "H":
                     //go back to the home page();
                     return;
                 default:
-                    System.out.println("Invalid option entered (press Enter to continue)");
-                    System.out.println("\n\n");
+                    System.out.println("Invalid option entered. Try again.");
+                    System.out.println("\n");
             }//closing curly for switch
 
         }//closing curly for while
 
 
     }//closing curly for displayLedgerScreen
+
+    //Reports screen
+    public static void displayReportsScreen(Scanner scanner, ArrayList<Transaction> transList) {
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        while (true) {
+            System.out.println("Which would you like to run? ");
+            System.out.println("\t1) Month To Date");
+            System.out.println("\t2) Previous Month");
+            System.out.println("\t3) Year To Date");
+            System.out.println("\t4) Previous Year");
+            System.out.println("\t5) Search by Vendor");
+            System.out.println("\t0) Back");
+            System.out.print("Enter your selection: ");
+            String userOption = scanner.nextLine().toUpperCase();
+
+            switch (userOption) {
+                case "1"://Month To Date means period from start of month to today.
+                    for (int i = transList.size() - 1; i >= 0; i--) {
+                        Transaction t = transList.get(i);
+                        LocalDate transDate = LocalDate.parse(t.getDate(), dateFormatter);
+                        if (transDate.getMonthValue() == today.getMonthValue() && transDate.getYear() == today.getYear()) {
+                            System.out.printf("date: %s | time: %s | description: %s | vendor: %s | amount: %.2f%n", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+                        }
+                    }
+                    break;
+                case "2":
+                    for (int i = transList.size() - 1; i >= 0; i--) {
+                        Transaction t = transList.get(i);
+                        LocalDate transDate = LocalDate.parse(t.getDate(), dateFormatter);
+                        if (transDate.getMonthValue() == today.minusMonths(1).getMonthValue() && transDate.getYear() == today.minusMonths(1).getYear()) {
+                            System.out.printf("date: %s | time: %s | description: %s | vendor: %s | amount: %.2f%n", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+                        }
+
+                    }
+                    break;
+                case "3"://Year To Date means first day of the current year up to the current date.
+                    for (int i = transList.size() - 1; i >= 0; i--) {
+                        Transaction t = transList.get(i);
+                        LocalDate transDate = LocalDate.parse(t.getDate(), dateFormatter);
+                        if (transDate.getYear() == today.getYear()) {
+                            System.out.printf("date: %s | time: %s | description: %s | vendor: %s | amount: %.2f%n", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+                        }
+                    }
+                    break;
+                case "4":
+                    for (int i = transList.size() - 1; i >= 0; i--) {
+                        Transaction t = transList.get(i);
+                        LocalDate transDate = LocalDate.parse(t.getDate(), dateFormatter);
+                        if (transDate.getYear() == today.minusYears(1).getYear()) {
+                            System.out.printf("date: %s | time: %s | description: %s | vendor: %s | amount: %.2f%n", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+                        }
+                    }
+                    break;
+                case "5":
+                    //search by vendor
+                    System.out.println("Enter vendor name: ");
+                    String venName = scanner.nextLine();
+                    for (int i = transList.size() - 1; i >= 0; i--) {
+                        Transaction t = transList.get(i);
+                        if (venName.equalsIgnoreCase(t.getVendor())){
+                            System.out.printf("date: %s | time: %s | description: %s | vendor: %s | amount: %.2f%n", t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+                        }
+                    }
+                    break;
+                case "0":
+                    //go back to the Ledger page
+                    return;
+                default:
+                    System.out.println("Invalid option entered. Try again.");
+                    System.out.println("\n");
+            }//closing curly for switch
+
+        }//closing curly for while
+
+    }//closing curly for displayReportsScreen
 }
