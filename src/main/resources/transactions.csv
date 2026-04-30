@@ -1,23 +1,4 @@
 date|time|description|vendor|amount
-2026-03-01|08:30:00|Purchased tomato seeds|SeedSavers Exchange|-45.00
-2026-03-03|09:15:00|Sold herb bundles at market|Atlanta Farmers Market|120.00
-2026-03-05|10:00:00|Bought potting soil bags|Home Depot|-78.50
-2026-03-08|14:30:00|Sold seedling trays|Local Nursery Co|200.00
-2026-03-12|09:45:00|Purchased garden tools|Ace Hardware|-134.99
-2026-03-15|11:00:00|Landscape consultation fee|Green Acres HOA|350.00
-2026-03-18|08:00:00|Bought fertilizer and mulch|Home Depot|-62.75
-2026-03-22|13:00:00|Sold vegetable basket|Peachtree Market|95.00
-2026-04-01|09:30:00|Purchased drip irrigation kit|Amazon|-189.99
-2026-04-05|10:15:00|Sold herb seedlings|Atlanta Farmers Market|175.00
-2026-04-10|08:45:00|Bought raised bed lumber|Home Depot|-210.00
-2026-04-14|11:30:00|Spring planting consultation|Riverside Gardens|425.00
-2026-04-18|09:00:00|Purchased compost bins|Amazon|-89.99
-2026-04-22|14:00:00|Sold flower bouquets|Peachtree Market|145.00
-2026-04-27|10:30:00|Sold custom garden design|Private Client|600.00
-2026-04-29|14:14:17|sold tomato seedlings|Marietta Square Farmers Market|50.00
-2026-04-29|15:20:46|Bought fish fertilizer |Organic Garden Goods|-35.25
-2026-04-30|12:37:20|Gardening For Beginners Class|Atlanta Botanical Gardens|700.00
-2026-04-30|12:40:19|Purchased cattle panels|Tractor Supply|-156.50
 2025-01-05|09:15:00|Purchased seed starting kit|Tractor Supply|-45.99
 2025-01-12|10:30:00|Sold winter herb bundles|Marietta Square Farmers Market|85.00
 2025-02-08|11:00:00|Bought organic fertilizer|Sprouts|-32.50
@@ -47,5 +28,26 @@ date|time|description|vendor|amount
 2026-01-24|11:15:00|Bought seed starting supplies|Tractor Supply|-55.99
 2026-02-07|10:30:00|Sold Valentine floral arrangements|Pike Nurseries|295.00
 2026-02-20|09:45:00|Purchased organic soil amendments|Lowes|-88.50
+2026-03-01|08:30:00|Purchased tomato seeds|SeedSavers Exchange|-45.00
+2026-03-03|09:15:00|Sold herb bundles at market|Atlanta Farmers Market|120.00
+2026-03-05|10:00:00|Bought potting soil bags|Home Depot|-78.50
 2026-03-08|11:00:00|Spring garden consultation|Atlanta Botanical Garden|525.00
+2026-03-08|14:30:00|Sold seedling trays|Local Nursery Co|200.00
+2026-03-12|09:45:00|Purchased garden tools|Ace Hardware|-134.99
+2026-03-15|11:00:00|Landscape consultation fee|Green Acres HOA|350.00
+2026-03-18|08:00:00|Bought fertilizer and mulch|Home Depot|-62.75
 2026-03-20|09:30:00|Bought spring seedling supplies|Pike Nurseries|-72.99
+2026-03-22|13:00:00|Sold vegetable basket|Peachtree Market|95.00
+2026-04-01|09:30:00|Purchased drip irrigation kit|Amazon|-189.99
+2026-04-05|10:15:00|Sold herb seedlings|Atlanta Farmers Market|175.00
+2026-04-10|08:45:00|Bought raised bed lumber|Home Depot|-210.00
+2026-04-14|11:30:00|Spring planting consultation|Riverside Gardens|425.00
+2026-04-18|09:00:00|Purchased compost bins|Amazon|-89.99
+2026-04-22|14:00:00|Sold flower bouquets|Peachtree Market|145.00
+2026-04-27|10:30:00|Sold custom garden design|Private Client|600.00
+2026-04-29|14:14:17|Sold tomato seedlings|Marietta Square Farmers Market|50.00
+2026-04-29|15:20:46|Bought fish fertilizer|Organic Garden Goods|-35.25
+2026-04-30|12:37:20|Gardening For Beginners Class|Atlanta Botanical Gardens|700.00
+2026-04-30|12:40:19|Purchased cattle panels|Tractor Supply|-156.50
+2026-04-30|15:54:54|tomato plants|Farmers Market|10.00
+2026-04-30|15:55:32|bought clay pots|Lowes|-20.00

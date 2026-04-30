@@ -163,6 +163,8 @@ public class RootsAndRevenueApp {
 
             String line;
             while((line = buffReader.readLine()) != null) {
+                if (line.trim().isEmpty()) continue;//added this to avoid blank lines
+
                 String[] splitData = line.split(Pattern.quote("|"));
                 String date = splitData[0];
                 String time = splitData[1];
