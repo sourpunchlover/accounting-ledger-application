@@ -244,7 +244,7 @@ public class RootsAndRevenueApp {
             System.out.println("\t5) Search by Vendor");
             System.out.println("\t0) Back");
             System.out.print("Enter your selection: ");
-            String userOption = scanner.nextLine().toUpperCase();
+            String userOption = scanner.nextLine();
 
             switch (userOption) {
                 case "1"://Month To Date means period from start of month to today.
